@@ -17,7 +17,7 @@ try {
 android {
     signingConfigs {
         release {
-            keyAlias ANDROID_KEY_ALIAS
+            keyAlias 'alanndz'
             keyPassword ANDROID_KEY_PASSWORD
             storeFile file('release.jks')
             storePassword ANDROID_STORE_PASSWORD
