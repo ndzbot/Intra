@@ -1,0 +1,23 @@
+version: v1.0
+name: Building Intra App
+agent:
+  machine:
+    type: e1-standard-8
+    os_image: ubuntu1804
+ 
+blocks:
+  - name: "Build"
+    task:
+      env_vars:
+        - name: APP_ENV
+          value: prod
+      jobs:
+      - name: App Build
+        commands:
+          - checkout
+          - cd Android
+          - sudo apt-get update
+          - install-package --update-new git wget tar unzip lib32stdc++6 lib32z1 libssl-dev
+          - git clone --depth=1 https://github.com/alanndz/my_scripts .build
+          - chmod +x .build/build_app_intra.sh
+          - bash .build/build_app_intra.sh
